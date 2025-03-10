@@ -1,0 +1,217 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-image: url('./images/bg.jpg'); /* Correct relative path */
+    background-size: cover; /* Ensure the image covers the entire background */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.5); /* More transparency for a lighter look */
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 500px;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Add a blur effect for a modern look */
+}
+
+.container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+#weatherDisplay {
+    background-color: rgba(255, 255, 255, 0.8); /* More transparency */
+    color: #212529;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+    text-align: center;
+    max-height: 400px;
+    overflow-y: auto; /* Allow scrolling for overflow content */
+    width: 100%; /* Set to full width of the parent container */
+    max-width: 1000px; /* Set a maximum width to prevent it from being too wide */
+}
+
+#weatherDisplay:hover {
+    background-color: rgba(224, 247, 250, 0.9); /* More transparency */
+}
+
+#forecastDisplay {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque for better visibility */
+    color: #212529;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    width: 100%; /* Set to full width of the parent container */
+    max-width: 1000px; /* Set a maximum width to prevent it from being too wide */
+}
+
+.forecast-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  /* Distributes space evenly around items */
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white background */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;  /* Takes full width of the parent element */
+    overflow-x: auto;  /* Allows horizontal scrolling */
+}
+
+.forecast-day {
+    background-color: rgba(255, 255, 255, 1); /* Fully opaque for clarity */
+    margin: 10px; /* Add margin for spacing */
+    padding: 15px; /* Increased padding for a better look */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    flex: 1; /* Allow items to grow and fill the available space */
+    min-width: 150px; /* Minimum width for each forecast day */
+    max-width: 200px; /* Maximum width for each forecast day */
+    text-align: center; /* Center text within each forecast day */
+}
+
+.forecast-day:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-day img {
+    width: 50px; /* Set a fixed width for the weather icon */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.forecast-day h4 {
+    font-size: 0.85rem; /* Smaller font size for headings */
+    color: #333; /* Dark gray text color for better readability */
+    margin-bottom: 5px; /* Space below the day heading */
+}
+
+.forecast-day p {
+    font-size: 0.8rem; /* Consistent font size for all texts */
+    margin: 2px 0; /* Minimal vertical spacing for a compact look */
+}
+
+.forecast-day img {
+    width: 30px;  /* Appropriately sized icons */
+    height: 30px;
+    margin-bottom: 5px;  /* Space below icons */
+}
+
+.forecast-day:hover {
+    background-color: #f0f0f0;  /* Light grey background on hover */
+    cursor: pointer;  /* Indicates the element is interactive */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.input-group input[type="text"] {
+    flex: 1; /* Allow the input to take available space */
+    border-radius: 30px; /* Match the button style */
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.input-group button {
+    margin-left: 10px; /* Add space between the input and the button */
+    padding: 10px 15px; /* Adjust padding for a better look */
+    font-size: 14px; /* Ensure font size is consistent */
+    border-radius: 25px; /* Match the button style */
+    background: linear-gradient(135deg, #87CEEB, #00BFFF); /* Sky blue gradient */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #ffffff; /* White text for better contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out; /* Add a fade-in animation */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #00BFFF, #87CEEB); /* Reverse gradient on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+button i {
+    font-size: 1.2rem; /* Smaller icon size for subtlety */
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #ffffff; /* White color for contrast */
+}
+
+button:hover i {
+    transform: rotate(15deg); /* Subtle rotation for a playful effect */
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Removed redundant background property */
+
+.logo {
+    width: 100px; /* Set a fixed width for the logo */
+    height: 100px; /* Set a fixed height for the logo */
+    border-radius: 50%; /* Make the logo circular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    margin-bottom: 20px; /* Add some space below the logo */
+    animation: bounce 2s infinite; /* Add a bounce animation */
+}
+
+.text-center.mb-4 {
+    margin-top: 20px; /* Add some space at the top */
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
