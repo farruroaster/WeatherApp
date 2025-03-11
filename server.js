@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios'); // Ensure axios is required at the top
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment port for Heroku or 3000 locally
 
 // Your WeatherAPI.com API key
 const API_KEY = 'a81872aa67d64257b43172845251003';
@@ -40,11 +40,6 @@ app.get('/weather', (req, res) => {
         });
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
-
 // Route to handle 5-day forecast API requests
 app.get('/forecast', (req, res) => {
     const city = req.query.city;
@@ -68,4 +63,9 @@ app.get('/forecast', (req, res) => {
                 res.status(500).send({ message: 'Error setting up request to the weather service' });
             }
         });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
