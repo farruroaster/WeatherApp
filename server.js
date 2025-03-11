@@ -1,13 +1,14 @@
 const express = require('express');
 const axios = require('axios'); // Ensure axios is required at the top
+const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000; // Use environment port for Heroku or 3000 locally
+const PORT = process.env.PORT || 3000; // Use the port from the environment or default to 3000
 
 // Your WeatherAPI.com API key
 const API_KEY = 'a81872aa67d64257b43172845251003';
 
 // Serve static files from the 'public' directory
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Route to handle weather API requests
 app.get('/weather', (req, res) => {
@@ -64,12 +65,13 @@ app.get('/forecast', (req, res) => {
             }
         });
 });
-// Route to handle the root URL
+
+// Route for the home page
 app.get('/', (req, res) => {
-    res.send('Welcome to the Weather App!');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
