@@ -64,6 +64,10 @@ app.get('/forecast', (req, res) => {
             }
         });
 });
+// Route to handle the root URL
+app.get('/', (req, res) => {
+    res.send('Welcome to the Weather App!');
+});
 
 // Start the server
 app.listen(port, () => {
