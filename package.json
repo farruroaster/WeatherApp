@@ -15,5 +15,18 @@
     "axios": "^1.8.2",
     "express": "^4.21.2",
     "vercel": "^41.4.0"
-  }
+  },
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ]
 }
