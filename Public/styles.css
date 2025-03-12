@@ -9,15 +9,14 @@ body {
     align-items: center;
     justify-content: flex-start;
     margin: 0;
-    overflow: hidden;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.5); /* More transparency for a lighter look */
+    background: rgba(255, 255, 255, 0.8); /* More opaque for better visibility */
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     max-width: 90%;
     width: 100%;
     backdrop-filter: blur(10px); /* Add a blur effect for a modern look */
@@ -28,20 +27,15 @@ body {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
-#weatherDisplay {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque for better visibility */
-    color: #212529;
-    border: none;
+#weatherDisplay, #forecastDisplay {
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
-    padding: 15px; /* Adjust padding for a snug fit */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    text-align: center;
-    max-height: 400px;
-    overflow-y: auto; /* Allow scrolling for overflow content */
-    width: auto; /* Set to auto width to fit content */
-    max-width: 1000px; /* Set a maximum width to prevent it from being too wide */
-    margin: 20px 0; /* Add some space above and below the box */
+    padding: 15px;
+    margin: 20px 0;
+    max-width: 1000px;
+    width: 100%; /* Ensure it takes full width */
+    overflow-y: auto; /* Allow vertical scrolling within the box */
+    max-height: 400px; /* Set a max height for the display */
 }
 
 /* Add a gradient background for the weather info */
@@ -80,29 +74,19 @@ body {
 
 .forecast-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;  /* Distributes space evenly around items */
-    align-items: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Allow horizontal scrolling */
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white background */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    margin-top: 20px;
-    width: 100%;  /* Takes full width of the parent element */
-    overflow-x: auto;  /* Allows horizontal scrolling */
 }
 
 .forecast-day {
-    background-color: rgba(255, 255, 255, 1); /* Fully opaque for clarity */
-    margin: 10px; /* Add margin for spacing */
-    padding: 15px; /* Increased padding for a better look */
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    margin: 10px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    flex: 1; /* Allow items to grow and fill the available space */
+    text-align: center;
     min-width: 150px; /* Minimum width for each forecast day */
-    max-width: 200px; /* Maximum width for each forecast day */
-    text-align: center; /* Center text within each forecast day */
 }
 
 .forecast-day:hover {
@@ -139,35 +123,14 @@ body {
 }
 
 .input-group {
-    margin-bottom: 20px;
-    position: relative;
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
-}
-
-.input-group input[type="text"] {
-    flex: 1; /* Allow the input to take available space */
-    border-radius: 30px; /* Match the button style */
-    padding: 10px 20px;
-    border: 1px solid #ddd;
-    transition: border-color 0.3s ease;
-}
-
-.input-group button {
-    margin-left: 10px; /* Add space between the input and the button */
-    padding: 10px 15px; /* Adjust padding for a better look */
-    font-size: 14px; /* Ensure font size is consistent */
-    border-radius: 25px; /* Match the button style */
-    background: linear-gradient(135deg, #87CEEB, #00BFFF); /* Sky blue gradient */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* Space between icon and text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column; /* Stack input and button vertically */
+    margin-bottom: 20px;
+}
+
+.input-group input[type="text"], .input-group button {
+    width: 100%; /* Make input and button full width */
+    margin-bottom: 10px; /* Space between input and button */
 }
 
 h1 {
@@ -237,25 +200,8 @@ input[type="text"]:focus {
         padding: 15px; /* Reduce padding on smaller screens */
     }
 
-    #weatherDisplay, #forecastDisplay {
-        padding: 15px; /* Adjust padding for smaller screens */
-    }
-
     .forecast-day {
-        flex: 1 1 100%; /* Allow forecast days to stack on smaller screens */
-        margin: 5px 0; /* Adjust margin for better spacing */
-    }
-
-    .input-group {
-        flex-direction: column; /* Stack input and button vertically */
-    }
-
-    .input-group input[type="text"] {
-        margin-bottom: 10px; /* Add space between input and button */
-    }
-
-    .input-group button {
-        width: 100%; /* Make button full width */
+        flex: 1 1 100%; /* Stack forecast days on smaller screens */
     }
 }
 
@@ -267,11 +213,6 @@ input[type="text"]:focus {
     .logo {
         width: 80px; /* Adjust logo size */
         height: 80px; /* Adjust logo size */
-    }
-
-    .forecast-day {
-        min-width: 120px; /* Adjust minimum width for forecast days */
-        max-width: 150px; /* Adjust maximum width for forecast days */
     }
 }
 
