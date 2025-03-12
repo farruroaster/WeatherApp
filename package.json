@@ -1,11 +1,10 @@
 {
   "name": "weatherapp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "echo 'No build needed for Express apps'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "build": "echo 'Build step not required for Express server'"
   },
   "keywords": [],
   "author": "",
@@ -15,18 +14,5 @@
     "axios": "^1.8.2",
     "express": "^4.21.2",
     "vercel": "^41.4.0"
-  },
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
-  ]
+  }
 }
