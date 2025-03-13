@@ -9,10 +9,15 @@ Current Weather: Users can input various types of location identifiers to get th
 5-Day Forecast: Extends the functionality to show weather forecasts for the next five days.
 Location-based Weather: Users can also view weather based on their current geographical location.
 Dynamic Weather Icons: Utilizes icons or images to enhance the visual representation of weather data.
+
 Technology Stack
+
 Frontend: [Specify technologies e.g., React, HTML/CSS]
+
 Backend: [Specify technologies e.g., Node.js, Python]
+
 Database: [Specify type e.g., SQL (PostgreSQL), NoSQL (MongoDB)]
+
 APIs Used: [List all APIs used e.g., OpenWeatherMap API]
 
 
