@@ -1,6 +1,8 @@
 Weather App
+
 Overview
 This Weather App allows users to enter a location (by Zip Code, GPS Coordinates, Landmarks, Town, or City) and receive current weather information. The application is designed to handle user input creatively and validate it effectively, ensuring that the data gathered via API is relevant and real-time.
+
 
 Features
 Current Weather: Users can input various types of location identifiers to get the weather information.
@@ -12,12 +14,20 @@ Frontend: [Specify technologies e.g., React, HTML/CSS]
 Backend: [Specify technologies e.g., Node.js, Python]
 Database: [Specify type e.g., SQL (PostgreSQL), NoSQL (MongoDB)]
 APIs Used: [List all APIs used e.g., OpenWeatherMap API]
+
+
+
 Installation
 Provide step-by-step instructions on how to get a development environment running.
 
 Clone the repository:
+
 git clone https://github.com/farruroaster/WeatherApp.git
+
 Install dependencies:
+
 npm install
+
 Start the server:
+
 npm start
